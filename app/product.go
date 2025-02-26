@@ -10,7 +10,7 @@ func init() {
 	govalidator.SetFieldsRequiredByDefault(true)
 }
 
-type ProductInterface interface {
+type IProduct interface {
 	IsValid() (bool, error)
 	Enable() error
 	Disable() error
@@ -18,6 +18,26 @@ type ProductInterface interface {
 	GetName() string
 	GetStatus() string
 	GetPrice() float64
+}
+
+type IProductService interface {
+	Get(id string) (IProduct, error)
+	Create(name string, price float64) (IProduct, error)
+	Enable(product IProduct) (IProduct, error)
+	Disable(product IProduct) (IProduct, error)
+}
+
+type IProductReader interface {
+	Get(id string) (IProduct, error)
+}
+
+type IProductWriter interface {
+	Create(product IProduct) (IProduct, error)
+}
+
+type IProductPersistence interface {
+	IProductReader
+	IProductWriter
 }
 
 const (
@@ -30,6 +50,14 @@ type Product struct {
 	Name   string  `valid:"required"`
 	Price  float64 `valid:"float,optional"`
 	Status string  `valid:"required"`
+}
+
+func NewProduct() *Product {
+	product := Product{
+		Id: uuid.NewV4().String(),
+		Status: DISABLED,
+	}
+	return &product
 }
 
 func (p *Product) IsValid() (bool, error) {
