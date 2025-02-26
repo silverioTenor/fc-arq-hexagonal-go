@@ -6,6 +6,10 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+func init() {
+	govalidator.SetFieldsRequiredByDefault(true)
+}
+
 type ProductInterface interface {
 	IsValid() (bool, error)
 	Enable() error
