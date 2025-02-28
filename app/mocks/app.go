@@ -277,19 +277,19 @@ func (m *MockIProductWriter) EXPECT() *MockIProductWriterMockRecorder {
 	return m.recorder
 }
 
-// Create mocks base method.
-func (m *MockIProductWriter) Create(product app.IProduct) (app.IProduct, error) {
+// Save mocks base method.
+func (m *MockIProductWriter) Save(product app.IProduct) (app.IProduct, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Create", product)
+	ret := m.ctrl.Call(m, "Save", product)
 	ret0, _ := ret[0].(app.IProduct)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// Create indicates an expected call of Create.
-func (mr *MockIProductWriterMockRecorder) Create(product interface{}) *gomock.Call {
+// Save indicates an expected call of Save.
+func (mr *MockIProductWriterMockRecorder) Save(product interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockIProductWriter)(nil).Create), product)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockIProductWriter)(nil).Save), product)
 }
 
 // MockIProductPersistence is a mock of IProductPersistence interface.
@@ -315,21 +315,6 @@ func (m *MockIProductPersistence) EXPECT() *MockIProductPersistenceMockRecorder 
 	return m.recorder
 }
 
-// Create mocks base method.
-func (m *MockIProductPersistence) Create(product app.IProduct) (app.IProduct, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Create", product)
-	ret0, _ := ret[0].(app.IProduct)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// Create indicates an expected call of Create.
-func (mr *MockIProductPersistenceMockRecorder) Create(product interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockIProductPersistence)(nil).Create), product)
-}
-
 // Get mocks base method.
 func (m *MockIProductPersistence) Get(id string) (app.IProduct, error) {
 	m.ctrl.T.Helper()
@@ -343,4 +328,19 @@ func (m *MockIProductPersistence) Get(id string) (app.IProduct, error) {
 func (mr *MockIProductPersistenceMockRecorder) Get(id interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockIProductPersistence)(nil).Get), id)
+}
+
+// Save mocks base method.
+func (m *MockIProductPersistence) Save(product app.IProduct) (app.IProduct, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Save", product)
+	ret0, _ := ret[0].(app.IProduct)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Save indicates an expected call of Save.
+func (mr *MockIProductPersistenceMockRecorder) Save(product interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockIProductPersistence)(nil).Save), product)
 }
