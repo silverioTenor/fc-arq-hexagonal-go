@@ -5,10 +5,10 @@
 package mock_app
 
 import (
-	app "githubcom/silverioTenor/fc-arq-hexagonal-go/app"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
+	app "github.com/silverioTenor/fc-arq-hexagonal-go/app"
 )
 
 // MockIProduct is a mock of IProduct interface.

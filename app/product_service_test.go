@@ -1,13 +1,13 @@
 package app_test
 
 import (
-	"githubcom/silverioTenor/fc-arq-hexagonal-go/app"
-	mock_app "githubcom/silverioTenor/fc-arq-hexagonal-go/app/mocks"
-	"testing"
-
 	"github.com/golang/mock/gomock"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/app"
+	mock_app "github.com/silverioTenor/fc-arq-hexagonal-go/app/mocks"
 	"github.com/stretchr/testify/require"
+	"testing"
 )
+
 func TestProductService_Get(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()

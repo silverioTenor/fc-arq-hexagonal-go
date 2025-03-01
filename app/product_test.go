@@ -2,8 +2,8 @@ package app_test
 
 import (
 	uuid "github.com/satori/go.uuid"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/app"
 	"github.com/stretchr/testify/require"
-	"githubcom/silverioTenor/fc-arq-hexagonal-go/app"
 	"testing"
 )
 
