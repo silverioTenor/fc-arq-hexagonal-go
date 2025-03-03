@@ -4,7 +4,7 @@ import (
 	"database/sql"
 
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/silverioTenor/fc-arq-hexagonal-go/app"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/src/app"
 )
 
 type ProductDb struct {

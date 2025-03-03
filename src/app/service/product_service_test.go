@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/silverioTenor/fc-arq-hexagonal-go/app"
-	mock_app "github.com/silverioTenor/fc-arq-hexagonal-go/app/mocks"
-	"github.com/silverioTenor/fc-arq-hexagonal-go/app/service"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/src/app"
+	mock_app "github.com/silverioTenor/fc-arq-hexagonal-go/src/app/mocks"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/src/app/service"
 	"github.com/stretchr/testify/require"
 )
 

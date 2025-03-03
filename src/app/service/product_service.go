@@ -3,11 +3,17 @@ package service
 import (
 	"errors"
 
-	"github.com/silverioTenor/fc-arq-hexagonal-go/app"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/src/app"
 )
 
 type ProductService struct {
 	ProductPersistence app.IProductPersistence
+}
+
+func NewProductService(productPersistence app.IProductPersistence) *ProductService {
+	return &ProductService{
+		ProductPersistence: productPersistence,
+	}
 }
 
 func (s *ProductService) Get(id string) (app.IProduct, error) {
