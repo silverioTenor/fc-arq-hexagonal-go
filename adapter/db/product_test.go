@@ -66,6 +66,9 @@ func TestProductDb_SaveAndGetAll(t *testing.T) {
 	setUp()
 	defer Db.Close()
 
+	// ==================
+	// Should test CREATE
+	// ==================
 	productDb := db.NewProductDb(Db)
 	newProduct := app.NewProduct()
 	newProduct.Name = "Product 2"
@@ -73,17 +76,32 @@ func TestProductDb_SaveAndGetAll(t *testing.T) {
 	newProduct.Status = app.ENABLED
 
 	result, err := productDb.Save(newProduct)
+	require.Nil(t, err)
+
+	products, err := productDb.GetAll()
 
 	require.Nil(t, err)
 	require.NotNil(t, result)
+	require.Len(t, products, 2)
 	require.Equal(t, newProduct.GetId(), result.GetId())
 	require.Equal(t, newProduct.GetName(), result.GetName())
 	require.Equal(t, newProduct.GetPrice(), result.GetPrice())
 	require.Equal(t, newProduct.GetStatus(), result.GetStatus())
 
-	products, err := productDb.GetAll()
+	// ==================
+	// Should test UPDATE
+	// ==================
+	newProduct.Name = "Product 2 Updated"
+	newProduct.Price = 30.0
+
+	_, err = productDb.Save(newProduct)
+	require.Nil(t, err)
+
+	products, err = productDb.GetAll()
 
 	require.Nil(t, err)
 	require.Len(t, products, 2)
 	require.Contains(t, products, newProduct)
+	require.Equal(t, products[1].GetName(), "Product 2 Updated")
+	require.Equal(t, products[1].GetPrice(), 30.0)
 }
