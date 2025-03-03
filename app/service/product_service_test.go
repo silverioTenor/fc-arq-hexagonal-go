@@ -1,11 +1,13 @@
-package app_test
+package service_test
 
 import (
+	"testing"
+
 	"github.com/golang/mock/gomock"
 	"github.com/silverioTenor/fc-arq-hexagonal-go/app"
 	mock_app "github.com/silverioTenor/fc-arq-hexagonal-go/app/mocks"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/app/service"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestProductService_Get(t *testing.T) {
@@ -16,7 +18,7 @@ func TestProductService_Get(t *testing.T) {
 	persistence := mock_app.NewMockIProductPersistence(ctrl)
 	persistence.EXPECT().Get(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := app.ProductService{
+	service := service.ProductService{
 		ProductPersistence: persistence,
 	}
 
@@ -34,7 +36,7 @@ func TestProductService_Create(t *testing.T) {
 	persistence := mock_app.NewMockIProductPersistence(ctrl)
 	persistence.EXPECT().Save(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := app.ProductService{
+	service := service.ProductService{
 		ProductPersistence: persistence,
 	}
 
@@ -56,7 +58,7 @@ func TestProductService_ToggleError(t *testing.T) {
 	persistence := mock_app.NewMockIProductPersistence(ctrl)
 	persistence.EXPECT().Save(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := app.ProductService{
+	service := service.ProductService{
 		ProductPersistence: persistence,
 	}
 
@@ -77,7 +79,7 @@ func TestProductService_Enable(t *testing.T) {
 	persistence := mock_app.NewMockIProductPersistence(ctrl)
 	persistence.EXPECT().Save(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := app.ProductService{
+	service := service.ProductService{
 		ProductPersistence: persistence,
 	}
 
@@ -99,7 +101,7 @@ func TestProductService_Disable(t *testing.T) {
 	persistence := mock_app.NewMockIProductPersistence(ctrl)
 	persistence.EXPECT().Save(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := app.ProductService{
+	service := service.ProductService{
 		ProductPersistence: persistence,
 	}
 

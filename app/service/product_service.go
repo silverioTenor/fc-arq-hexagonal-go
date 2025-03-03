@@ -1,40 +1,44 @@
-package app
+package service
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/silverioTenor/fc-arq-hexagonal-go/app"
+)
 
 type ProductService struct {
-	ProductPersistence IProductPersistence
+	ProductPersistence app.IProductPersistence
 }
 
-func (s *ProductService) Get(id string) (IProduct, error) {
+func (s *ProductService) Get(id string) (app.IProduct, error) {
 	return s.ProductPersistence.Get(id)
 }
 
-func (s *ProductService) Create(name string, price float64) (IProduct, error) {
-	product := NewProduct()
+func (s *ProductService) Create(name string, price float64) (app.IProduct, error) {
+	product := app.NewProduct()
 	product.Name = name
 	product.Price = price
 	_, err := product.IsValid()
 
 	if err != nil {
-		return &Product{}, err
+		return &app.Product{}, err
 	}
 
 	result, err := s.ProductPersistence.Save(product)
 	if err != nil {
-		return &Product{}, err
+		return &app.Product{}, err
 	}
 
 	return result, nil
 }
 
-func (s *ProductService) Toggle(product IProduct) (IProduct, error) {
+func (s *ProductService) Toggle(product app.IProduct) (app.IProduct, error) {
 	err := error(nil)
 
 	switch product.GetStatus() {
-		case ENABLED:
+		case app.ENABLED:
 			err = product.Disable()
-		case DISABLED:
+		case app.DISABLED:
 			err = product.Enable()
 		default:
 			return nil, errors.New("the status must be enabled or disabled")
