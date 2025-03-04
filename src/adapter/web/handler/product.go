@@ -56,7 +56,7 @@ func createProduct(service app.IProductService) http.Handler {
 		product, err := service.Create(productDto.Name, productDto.Price)
 
 		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			w.WriteHeader(http.StatusBadRequest)
 			w.Write(jsonError(err.Error()))
 			return
 		}
