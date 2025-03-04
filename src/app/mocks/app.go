@@ -171,36 +171,6 @@ func (mr *MockIProductServiceMockRecorder) Create(name, price interface{}) *gomo
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockIProductService)(nil).Create), name, price)
 }
 
-// Disable mocks base method.
-func (m *MockIProductService) Disable(product app.IProduct) (app.IProduct, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Disable", product)
-	ret0, _ := ret[0].(app.IProduct)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// Disable indicates an expected call of Disable.
-func (mr *MockIProductServiceMockRecorder) Disable(product interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Disable", reflect.TypeOf((*MockIProductService)(nil).Disable), product)
-}
-
-// Enable mocks base method.
-func (m *MockIProductService) Enable(product app.IProduct) (app.IProduct, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Enable", product)
-	ret0, _ := ret[0].(app.IProduct)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// Enable indicates an expected call of Enable.
-func (mr *MockIProductServiceMockRecorder) Enable(product interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Enable", reflect.TypeOf((*MockIProductService)(nil).Enable), product)
-}
-
 // Get mocks base method.
 func (m *MockIProductService) Get(id string) (app.IProduct, error) {
 	m.ctrl.T.Helper()
@@ -214,6 +184,21 @@ func (m *MockIProductService) Get(id string) (app.IProduct, error) {
 func (mr *MockIProductServiceMockRecorder) Get(id interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockIProductService)(nil).Get), id)
+}
+
+// Toggle mocks base method.
+func (m *MockIProductService) Toggle(product app.IProduct) (app.IProduct, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Toggle", product)
+	ret0, _ := ret[0].(app.IProduct)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Toggle indicates an expected call of Toggle.
+func (mr *MockIProductServiceMockRecorder) Toggle(product interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Toggle", reflect.TypeOf((*MockIProductService)(nil).Toggle), product)
 }
 
 // MockIProductReader is a mock of IProductReader interface.

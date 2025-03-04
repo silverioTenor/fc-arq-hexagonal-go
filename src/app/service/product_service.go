@@ -61,31 +61,3 @@ func (s *ProductService) Toggle(product app.IProduct) (app.IProduct, error) {
 
 	return result, nil
 }
-
-// func (s *ProductService) Enable(product IProduct) (IProduct, error) {
-// 	err := product.Enable()
-// 	if err != nil {
-// 		return &Product{}, err
-// 	}
-
-// 	result, err := s.ProductPersistence.Save(product)
-// 	if err != nil {
-// 		return &Product{}, err
-// 	}
-
-// 	return result, nil
-// }
-
-// func (s *ProductService) Disable(product IProduct) (IProduct, error) {
-// 	err := product.Enable()
-// 	if err != nil {
-// 		return &Product{}, err
-// 	}
-
-// 	result, err := s.ProductPersistence.Save(product)
-// 	if err != nil {
-// 		return &Product{}, err
-// 	}
-
-// 	return result, nil
-// }
