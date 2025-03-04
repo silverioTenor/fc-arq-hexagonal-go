@@ -3,7 +3,7 @@ package dto
 import "github.com/silverioTenor/fc-arq-hexagonal-go/src/app"
 
 type Product struct {
-	Id     string     `json:"id"`
+	Id     string  `json:"id"`
 	Name   string  `json:"name"`
 	Price  float64 `json:"price"`
 	Status string  `json:"status"`

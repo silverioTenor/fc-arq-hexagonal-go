@@ -43,9 +43,9 @@ func (s *ProductService) Toggle(product app.IProduct) (app.IProduct, error) {
 
 	switch product.GetStatus() {
 		case app.ENABLED:
-			err = product.Disable()
-		case app.DISABLED:
 			err = product.Enable()
+		case app.DISABLED:
+			err = product.Disable()
 		default:
 			return nil, errors.New("the status must be enabled or disabled")
 	}

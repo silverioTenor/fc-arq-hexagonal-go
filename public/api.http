@@ -7,5 +7,14 @@ Content-Type: application/json
 
 {
   "name": "Product API",
-  "price": -99.90
+  "price": 99.90
+}
+
+###
+
+PATCH http://localhost:9000/product/bf22c1fa-6318-4526-8860-6b28a1f0354c/change-status HTTP/1.1
+Content-Type: application/json
+
+{
+  "status": "enabled"
 }
