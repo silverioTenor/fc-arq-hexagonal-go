@@ -6,6 +6,7 @@ import (
 
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
+	"github.com/silverioTenor/fc-arq-hexagonal-go/src/adapter/dto"
 	"github.com/silverioTenor/fc-arq-hexagonal-go/src/app"
 )
 
@@ -13,6 +14,10 @@ func MakeProductHandlers(r *mux.Router, n * negroni.Negroni, service app.IProduc
 	r.Handle("/product/{id}", n.With(
 		negroni.Wrap(getProduct(service)),
 	)).Methods("GET", "OPTIONS")
+	
+	r.Handle("/product", n.With(
+		negroni.Wrap(createProduct(service)),
+	)).Methods("POST", "OPTIONS")
 }
 
 func getProduct(service app.IProductService) http.Handler {
@@ -24,6 +29,35 @@ func getProduct(service app.IProductService) http.Handler {
 
 		if err != nil {
 			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+
+		err = json.NewEncoder(w).Encode(product)
+
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+	})
+}
+
+func createProduct(service app.IProductService) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		var productDto dto.Product
+		err := json.NewDecoder(r.Body).Decode(&productDto)
+
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write(jsonError(err.Error()))
+			return
+		}
+
+		product, err := service.Create(productDto.Name, productDto.Price)
+
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write(jsonError(err.Error()))
 			return
 		}
 
